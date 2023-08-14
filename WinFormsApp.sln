@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupService.Service", "BackupService\BackupService.Service.csproj", "{F907216D-371A-4849-9360-544AE1C53FD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp\WindowsFormsApp.csproj", "{C72B26B6-8AED-4FF3-9DEF-5C175AB69835}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F907216D-371A-4849-9360-544AE1C53FD6} = {F907216D-371A-4849-9360-544AE1C53FD6}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F907216D-371A-4849-9360-544AE1C53FD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F907216D-371A-4849-9360-544AE1C53FD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F907216D-371A-4849-9360-544AE1C53FD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F907216D-371A-4849-9360-544AE1C53FD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72B26B6-8AED-4FF3-9DEF-5C175AB69835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72B26B6-8AED-4FF3-9DEF-5C175AB69835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72B26B6-8AED-4FF3-9DEF-5C175AB69835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72B26B6-8AED-4FF3-9DEF-5C175AB69835}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0BD68FD-263D-415F-9CA3-77B0D72A476D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BackupData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <File>D:\Winform\Backup</File>
+  <Host>ftp://192.168.100.104:21</Host>
+  <Username>backup</Username>
+  <Password>123456</Password>
+  <FileCount>3</FileCount>
+</BackupData>
