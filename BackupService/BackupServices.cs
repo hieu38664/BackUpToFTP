@@ -210,9 +210,8 @@ namespace ServiceBackup.BackupServices
                         using (FileStream fileStream = File.OpenRead(zipFile))
                         {
                             request = (FtpWebRequest)WebRequest.Create(host + destinationFilePath);
-                            //kết nối 1 lần
-                            //request.Method = WebRequestMethods.Ftp.UploadFile;
-                            //request.Credentials = new NetworkCredential(username, password);
+                            request.Method = WebRequestMethods.Ftp.UploadFile;
+                            request.Credentials = new NetworkCredential(username, password);
                             using (Stream requestStream = request.GetRequestStream())
                             {
                                 fileStream.CopyTo(requestStream);
@@ -253,9 +252,8 @@ namespace ServiceBackup.BackupServices
                     {
                         // Tiến hành xoá tệp tin từ máy chủ FTP
                         request = (FtpWebRequest)WebRequest.Create(host + "/" + oldestFile);
-                        //kết nối 1 lần
-                        //request.Credentials = new NetworkCredential(username, password);
-                        //request.Method = WebRequestMethods.Ftp.DeleteFile;
+                        request.Credentials = new NetworkCredential(username, password);
+                        request.Method = WebRequestMethods.Ftp.DeleteFile;
                         using (FtpWebResponse deleteResponse = (FtpWebResponse)request.GetResponse()) { }
 
                         // Xoá tệp tin cũ nhất khỏi danh sách

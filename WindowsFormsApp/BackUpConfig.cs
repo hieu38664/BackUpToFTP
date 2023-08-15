@@ -80,15 +80,15 @@ namespace WindowsFormsApp
 
         private void BackUpConfig_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn thoát khỏi ứng dụng?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                Application.ExitThread();
-            }
+            //DialogResult result = MessageBox.Show("Bạn có muốn thoát khỏi ứng dụng?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (result == DialogResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
+            //else
+            //{
+            //    Application.ExitThread();
+            //}
         }
 
         private void txtHost_TextChanged(object sender, EventArgs e)
