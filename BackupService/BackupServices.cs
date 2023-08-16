@@ -136,21 +136,51 @@ namespace ServiceBackup.BackupServices
                     string zipFileName = $"{DateTime.Now:yyyyMMdd_HHmmss}_{bakFileName}.zip";
                     string zipFilePath = Path.Combine(sourceFilePath, zipFileName);
 
-                    // Kiểm tra xem tệp zip đã tồn tại hay chưa
-                    if (File.Exists(zipFilePath))
+                    bool canZip = false;
+
+                    try
                     {
-                        continue;
+                        using (FileStream fs = File.Open(bakFile, FileMode.Open, FileAccess.Read, FileShare.None))
+                        {
+                            canZip = true;
+                        }
+                    }
+                    catch (IOException)
+                    {
+                        // Không thể mở tệp, có thể đang bị khóa bởi ứng dụng khác
+                        canZip = false;
                     }
 
-                    // Tạo tệp zip mới
-                    using (ZipArchive zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
+                    if (canZip)
                     {
-                        // Thêm tệp .bak vào tệp zip
-                        zipArchive.CreateEntryFromFile(bakFiles[i], Path.GetFileName(bakFiles[i]));
+                        // Tạo tệp zip và xóa tệp .bak như trong đoạn mã ban đầu
+                        using (ZipArchive zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
+                        {
+                            zipArchive.CreateEntryFromFile(bakFiles[i], Path.GetFileName(bakFiles[i]));
+                        }
+                        File.Delete(bakFile);
+                    }
+                    else
+                    {
+                        // Xử lý khi tệp không thể được nén do đang bị khóa
+                        // Ví dụ: thông báo lỗi hoặc thực hiện hành động khác
                     }
 
-                    // Xoá tệp .bak sau khi đã tạo tệp zip
-                    File.Delete(bakFile);
+                    //    // Kiểm tra xem tệp zip đã tồn tại hay chưa
+                    //    if (File.Exists(zipFilePath))
+                    //    {
+                    //        continue;
+                    //    }
+
+                    //    // Tạo tệp zip mới
+                    //    using (ZipArchive zipArchive = ZipFile.Open(zipFilePath, ZipArchiveMode.Create))
+                    //    {
+                    //        // Thêm tệp .bak vào tệp zip
+                    //        zipArchive.CreateEntryFromFile(bakFiles[i], Path.GetFileName(bakFiles[i]));
+                    //    }
+
+                    //    // Xoá tệp .bak sau khi đã tạo tệp zip
+                    //    File.Delete(bakFile);
                 }
 
                 // Tạo đối tượng FtpWebRequest
